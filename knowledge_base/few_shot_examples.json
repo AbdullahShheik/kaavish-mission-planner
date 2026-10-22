@@ -1,0 +1,119 @@
+{
+  "examples": [
+    {
+      "id": "plan_001",
+      "instruction": "Navigate to zone A and pick up the package.",
+      "output": {
+        "status": "ok",
+        "subtasks": [
+          {
+            "id": "T1",
+            "description": "Navigate to zone A.",
+            "required_skills": ["navigate_to"],
+            "args": { "zone": "zone_A" },
+            "dependencies": [],
+            "parallelizable": false,
+            "priority": 1
+          },
+          {
+            "id": "T2",
+            "description": "Pick up the package.",
+            "required_skills": ["pick"],
+            "args": { "object": "package" },
+            "dependencies": ["T1"],
+            "parallelizable": false,
+            "priority": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "plan_002",
+      "instruction": "Fly the drone to the facility and inspect the roof.",
+      "output": {
+        "status": "ok",
+        "subtasks": [
+          {
+            "id": "T1",
+            "description": "Fly drone to the facility.",
+            "required_skills": ["fly_to"],
+            "args": { "location": "facility" },
+            "dependencies": [],
+            "parallelizable": false,
+            "priority": 1
+          },
+          {
+            "id": "T2",
+            "description": "Inspect the roof.",
+            "required_skills": ["inspect"],
+            "args": { "target": "roof" },
+            "dependencies": ["T1"],
+            "parallelizable": false,
+            "priority": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "plan_003",
+      "instruction": "Transport the box to the dropoff point and return to base.",
+      "output": {
+        "status": "ok",
+        "subtasks": [
+          {
+            "id": "T1",
+            "description": "Pick up the box.",
+            "required_skills": ["pick"],
+            "args": { "object": "box" },
+            "dependencies": [],
+            "parallelizable": false,
+            "priority": 1
+          },
+          {
+            "id": "T2",
+            "description": "Navigate to dropoff point.",
+            "required_skills": ["navigate_to"],
+            "args": { "zone": "dropoff_point" },
+            "dependencies": ["T1"],
+            "parallelizable": false,
+            "priority": 2
+          },
+          {
+            "id": "T3",
+            "description": "Place the box at dropoff point.",
+            "required_skills": ["place"],
+            "args": { "object": "box", "location": "dropoff_point" },
+            "dependencies": ["T2"],
+            "parallelizable": false,
+            "priority": 3
+          },
+          {
+            "id": "T4",
+            "description": "Return to base.",
+            "required_skills": ["navigate_to"],
+            "args": { "zone": "base" },
+            "dependencies": ["T3"],
+            "parallelizable": false,
+            "priority": 4
+          }
+        ]
+      }
+    },
+    {
+      "id": "plan_004",
+      "instruction": "Move it to the other place.",
+      "output": {
+        "status": "clarification_needed",
+        "reason": "Unresolved referents, it and other place cannot be grounded to any known object or location."
+      }
+    },
+    {
+      "id": "plan_005",
+      "instruction": "Cook a meal in the kitchen.",
+      "output": {
+        "status": "infeasible",
+        "reason": "Cooking is outside the robot fleet's capabilities, no culinary skills exist in the registry."
+      }
+    }
+  ]
+}
