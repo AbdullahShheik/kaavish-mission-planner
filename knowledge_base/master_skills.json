@@ -1,0 +1,68 @@
+{
+  "skills": [
+    {
+      "skill_id": "navigate_to",
+      "description": "Navigate to a named location or zone using path planning.",
+      "inputs": ["location"],
+      "preconditions": ["robot is idle"],
+      "effects": ["robot is at location"],
+      "required_capabilities": ["mobility", "navigation"]
+    },
+    {
+      "skill_id": "pick",
+      "description": "Pick up a named object using the manipulator.",
+      "inputs": ["object"],
+      "preconditions": ["robot is at object location", "gripper is empty"],
+      "effects": ["robot is holding object"],
+      "required_capabilities": ["manipulation", "grasping"]
+    },
+    {
+      "skill_id": "place",
+      "description": "Place the currently held object at a target location.",
+      "inputs": ["object", "location"],
+      "preconditions": ["robot is holding object"],
+      "effects": ["object is at location", "gripper is empty"],
+      "required_capabilities": ["manipulation", "grasping"]
+    },
+    {
+      "skill_id": "fly_to",
+      "description": "Fly the drone to a named location or waypoint.",
+      "inputs": ["location"],
+      "preconditions": ["drone is idle"],
+      "effects": ["drone is at location"],
+      "required_capabilities": ["flight", "navigation"]
+    },
+    {
+      "skill_id": "inspect",
+      "description": "Inspect a named target using onboard sensors or camera.",
+      "inputs": ["target"],
+      "preconditions": ["robot is at target location"],
+      "effects": ["inspection report generated"],
+      "required_capabilities": ["sensing", "camera"]
+    },
+    {
+      "skill_id": "transport",
+      "description": "Transport a named object from one location to another.",
+      "inputs": ["object", "from_location", "to_location"],
+      "preconditions": ["robot is at from_location", "object is at from_location"],
+      "effects": ["object is at to_location"],
+      "required_capabilities": ["mobility", "manipulation"]
+    },
+    {
+      "skill_id": "wait",
+      "description": "Wait for a specified duration before proceeding.",
+      "inputs": ["duration"],
+      "preconditions": [],
+      "effects": ["specified duration has passed"],
+      "required_capabilities": []
+    },
+    {
+      "skill_id": "return_to_base",
+      "description": "Return the robot to its home base position.",
+      "inputs": [],
+      "preconditions": ["robot is idle"],
+      "effects": ["robot is at base"],
+      "required_capabilities": ["mobility", "navigation"]
+    }
+  ]
+}

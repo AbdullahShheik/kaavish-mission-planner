@@ -10,7 +10,7 @@ import os
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from RAG.few_shot_retriever import (
+from RAG.few_shot_retrieval import (
     load_examples,
     bank_summary,
     CosineFewShotRetriever,

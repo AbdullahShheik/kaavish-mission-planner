@@ -78,6 +78,8 @@ def load_skill_bank(filepath: str = MASTER_SKILLS_FILE) -> list[dict]:
       - inputs        : list of input parameter names
       - preconditions : list of precondition strings
       - effects       : list of effect strings
+      - required_capabilities : list of capabilities needed to run this skill,
+                                passed through for the solver, not shown to LLM
       - text          : retrieval text built from the skill's own fields,
                         used for sentence embedding and cosine similarity
     """
@@ -92,6 +94,7 @@ def load_skill_bank(filepath: str = MASTER_SKILLS_FILE) -> list[dict]:
             "inputs":        skill.get("inputs", []),
             "preconditions": skill.get("preconditions", []),
             "effects":       skill.get("effects", []),
+            "required_capabilities": skill.get("required_capabilities", []),
             "text":          _build_skill_text(skill),
         })
 
