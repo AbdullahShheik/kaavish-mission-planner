@@ -2,7 +2,6 @@
   "robots": [
     {
       "robot_type": "mobile_robot",
-      "urdf_source": "sample_mobile.urdf",
       "capabilities": [
         "navigation",
         "manipulation"
@@ -17,12 +16,10 @@
         "payload_capacity_kg": 10.0,
         "speed_m_s": 1.0
       },
-      "onboarding_method": "manual",
       "status": "active"
     },
     {
       "robot_type": "robotic_arm",
-      "urdf_source": null,
       "capabilities": [
         "manipulation"
       ],
@@ -35,7 +32,6 @@
         "payload_capacity_kg": 15.0,
         "speed_m_s": 0.0
       },
-      "onboarding_method": "manual",
       "status": "active"
     }
   ]
