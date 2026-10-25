@@ -23,14 +23,6 @@
       "preconditions": ["robot is holding object", "robot is at location"],
       "effects": ["object is at location", "gripper is empty"],
       "required_capabilities": ["manipulation"]
-    },
-    {
-      "skill_id": "wait",
-      "description": "Wait for a specified duration before proceeding.",
-      "inputs": ["duration"],
-      "preconditions": [],
-      "effects": ["specified duration has passed"],
-      "required_capabilities": []
     }
   ]
 }

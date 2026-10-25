@@ -9,8 +9,7 @@
       "skill_ids": [
         "navigate_to",
         "pick",
-        "place",
-        "wait"
+        "place"
       ],
       "specs": {
         "payload_capacity_kg": 10.0,
@@ -25,8 +24,7 @@
       ],
       "skill_ids": [
         "pick",
-        "place",
-        "wait"
+        "place"
       ],
       "specs": {
         "payload_capacity_kg": 15.0,
