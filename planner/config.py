@@ -42,7 +42,7 @@ GROQ_MODEL   = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 # Retry configuration
 
-# How many times the pipeline retries a failed LLM call before giving up.
+# How many times the pipeline retries a failed LLM call before giving up. Validation errors are also appended in the next prompt so the LLM knows exactly what to fix on retry.
 MAX_RETRIES  = 3
 
 # Few-shot retrieval configuration
