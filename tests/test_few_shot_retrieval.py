@@ -43,7 +43,6 @@ def test_retriever_init():
     print("\n--- Test 3: Retriever Initialization ---")
     examples = load_examples()
     retriever = CosineFewShotRetriever(examples)
-    print("TF-IDF vectorizer fitted. OK")
     print("Cross-encoder reranker loaded. OK")
 
 
