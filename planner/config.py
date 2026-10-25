@@ -37,7 +37,7 @@ _load_env_file(os.path.join(_PROJECT_ROOT, ".env"))
 
 # LLM configuration
 
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "YOUR_API_KEY")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 GROQ_MODEL   = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 # Retry configuration
