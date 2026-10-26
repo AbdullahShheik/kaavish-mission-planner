@@ -85,19 +85,30 @@ class TestTaxonomyKnowledgeBase(unittest.TestCase):
                 stage1_subtasks_by_id[ex["id"]] = ex["output"]["subtasks"]
 
         subclass_to_stage1_id = {
-            "ND[ST-SR-IA]": "plan_nd_st_sr_ia",
-            "ND[ST-SR-TA]": "plan_nd_st_sr_ta",
-            "ID[ST-SR-TA]": "plan_id_st_sr_ta",
-            "XD[ST-SR-IA]": "plan_xd_st_sr_ia",
-            "XD[ST-SR-TA]": "plan_xd_st_sr_ta",
-            "XD[ST-MR-IA]": "plan_xd_st_mr_ia",
-            "XD[ST-MR-TA]": "plan_xd_st_mr_ta",
+            "ND[ST-SR-IA]": ["plan_001"],
+            "ND[ST-SR-TA]": ["plan_002"],
+            "ID[ST-SR-TA]": ["plan_003"],
+            "XD[ST-SR-IA]": ["plan_004"],
+            "XD[ST-SR-TA]": ["plan_005"],
+            "XD[ST-MR-IA]": ["plan_006"],
+            "XD[ST-MR-TA]": ["plan_007"],
         }
 
         for ex in stage2_data["examples"]:
             subclass = ex["output_classification"]["subclass"]
-            stage1_id = subclass_to_stage1_id[subclass]
-            expected_subtasks = stage1_subtasks_by_id[stage1_id]
+            candidate_ids = subclass_to_stage1_id[subclass]
+            expected_subtasks = None
+            matched_id = None
+            for cid in candidate_ids:
+                if cid in stage1_subtasks_by_id:
+                    expected_subtasks = stage1_subtasks_by_id[cid]
+                    matched_id = cid
+                    break
+
+            self.assertIsNotNone(
+                expected_subtasks,
+                f"Could not find stage 1 plan for {subclass} (looked for {candidate_ids})",
+            )
             actual_subtasks = ex["input"]["subtasks"]
 
             self.assertEqual(
