@@ -1,3 +1,5 @@
 scikit-learn
 numpy
 sentence-transformers
+groq
+networkx

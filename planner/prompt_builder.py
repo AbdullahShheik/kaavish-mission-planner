@@ -13,11 +13,11 @@ Follows DART-LLM's P = (I, E, S, F) prompt structure:
 
 import itertools
 
-from RAG.few_shot_retriever import (
+from RAG.few_shot_retrieval import (
     CosineFewShotRetriever,
     format_examples_for_prompt,
 )
-from RAG.skill_retriever import build_skill_prompt_block
+from RAG.skill_retrieval import build_skill_prompt_block
 from planner.config import FEW_SHOT_K
 
 
@@ -84,7 +84,7 @@ Rules you must follow:
 
 15. Never assign specific robots to subtasks. Your job is only to decompose
     the mission into subtasks and their dependencies.
-    
+
 16. The keys in a subtask's args must exactly match the input names
     listed for that skill in the skill list. For example, if a skill
     lists inputs [object, location], the args must be
