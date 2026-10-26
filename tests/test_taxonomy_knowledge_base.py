@@ -191,8 +191,15 @@ class TestTaxonomyKnowledgeBase(unittest.TestCase):
             )
 
             axes = out["axes"]
-            for a_key in ["robot_model", "task_model", "time_horizon", "dependency"]:
-                self.assertIn(a_key, axes)
+            self.assertIn(axes["robot_model"], {"ST", "MT"})
+            self.assertIn(axes["task_model"], {"SR", "MR"})
+            self.assertIn(axes["time_horizon"], {"IA", "TA"})
+            self.assertIn(axes["dependency"], {"ND", "ID", "XD", "CD"})
+            expected_subclass = (
+                f"{axes['dependency']}[{axes['robot_model']}-"
+                f"{axes['task_model']}-{axes['time_horizon']}]"
+            )
+            self.assertEqual(out["subclass"], expected_subclass)
 
             sc = out["subclass"]
             self.assertIn(sc, self.target_subclasses)
