@@ -30,7 +30,7 @@
       "description": "Defines whether task allocation is instantaneous for immediate execution (IA) or time-extended planning over a future schedule (TA).",
       "values": {
         "IA": {
-          "definition": "Instantaneous assignment: Tasks are allocated immediately to available robots with no planning over future time horizons. Every task can be assigned and executed in parallel right now (|compatible robots| >= |tasks| with no sequential trips).",
+"definition": "Instantaneous assignment: Allocation decisions are made in one immediate assignment event rather than being revised over a future schedule; an assigned task may still contain sequential subtasks or precedence constraints.",
           "example": "2 pickup tasks dispatched concurrently to 2 idle mobile robots with no sequential backlog or capacity bottlenecks."
         },
         "TA": {
