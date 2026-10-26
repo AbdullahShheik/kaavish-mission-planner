@@ -114,24 +114,29 @@ flowchart TD
 ```text
 kaavish-mission-planner/
 ├── knowledge_base/
-│   ├── master_skills.json        # Atomic skill primitives (name, inputs, preconditions, effects)
-│   ├── few_shot_examples.json    # Benchmark few-shot plans for all iTax problem subclasses
-│   ├── robot_registry.json       # Fleet definitions, robot types, capabilities, payload specs
-│   └── robot_fleet.json          # Active count of each robot type in the environment
+│   ├── master_skills.json              # Atomic skill primitives (name, inputs, preconditions, effects)
+│   ├── few_shot_examples.json          # Benchmark few-shot plans for all iTax problem subclasses
+│   ├── robot_registry.json             # Fleet definitions, robot types, capabilities, payload specs
+│   ├── robot_fleet.json                # Active count of each robot type in the environment
+│   ├── korsah_taxonomy_axes.json       # Formal definitions of the 4 axes and 7 subclasses
+│   └── few_shot_examples_taxonomy.json # Stage-2 few-shot exemplars with step-by-step CoT classification
 ├── planner/
-│   ├── config.py                 # Central configuration, API keys, retry limits, hyperparams
-│   ├── llm_client.py             # LLM API client wrapper (Groq / Anthropic)
-│   ├── prompt_builder.py         # System prompt, schema definition, and P=(I,E,S,F) assembler
-│   └── dag_builder.py            # NetworkX DiGraph builder and 5-stage plan validator
+│   ├── config.py                       # Central configuration, API keys, retry limits, hyperparams
+│   ├── llm_client.py                   # LLM API client wrapper (Groq / Anthropic)
+│   ├── prompt_builder.py               # System prompt, schema definition, and P=(I,E,S,F) assembler
+│   ├── dag_builder.py                  # NetworkX DiGraph builder and 5-stage plan validator
+│   └── orchestrator.py                 # MissionPlanner orchestrator with retry & feedback loop
 ├── RAG/
-│   ├── skill_retrieval.py        # SentenceTransformer-based skill bank retriever
-│   └── few_shot_retrieval.py     # CrossEncoder-based few-shot example retriever
-├── resources/                    # Foundational papers (TEMPO, Gerkey 2004, Korsah 2013)
+│   ├── skill_retrieval.py              # SentenceTransformer-based skill bank retriever
+│   └── few_shot_retrieval.py           # CrossEncoder-based few-shot example retriever
+├── resources/                          # Foundational papers (TEMPO, Gerkey 2004, Korsah 2013)
 ├── tests/
-│   ├── test_skill_retrieval.py   # Unit tests for skill embedding & prompt block generation
-│   └── test_few_shot_retrieval.py# Unit tests for few-shot reranking & status guarantees
-├── requirements.txt              # Core python dependencies
-└── AGENT.md                      # This onboarding guide
+│   ├── test_skill_retrieval.py         # Unit tests for skill embedding & prompt block generation
+│   ├── test_few_shot_retrieval.py      # Unit tests for few-shot reranking & status guarantees
+│   ├── test_taxonomy_knowledge_base.py # Unit tests for taxonomy schema & exemplar consistency
+│   └── test_orchestrator.py            # Unit tests for end-to-end orchestrator and retry logic
+├── requirements.txt                    # Core python dependencies
+└── AGENT.md                            # This onboarding guide
 ```
 
 ---
@@ -209,8 +214,8 @@ print("Validation errors:", errors)
 - [x] Skill and few-shot RAG retrieval pipelines.
 - [x] Initial prompt assembly and DAG builder.
 - [x] Unique subtask ID validation.
+- [x] Implement end-to-end mission planning orchestrator with retry loop.
 - [ ] Incorporate `itax_subclass` classification into the prompt schema and validation.
-- [ ] Implement end-to-end mission planning orchestrator with retry loop.
 - [ ] Implement Semester 1 solvers (`ND[ST-SR-IA]`, `ND[ST-SR-TA]`, `ID[ST-SR-TA]`, `XD[ST-SR-IA]`).
 - [ ] 2D low-fidelity simulation validation (due December 2026).
 
