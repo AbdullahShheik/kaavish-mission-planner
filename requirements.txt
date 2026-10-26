@@ -3,3 +3,4 @@ numpy
 sentence-transformers
 groq
 networkx
+google-genai

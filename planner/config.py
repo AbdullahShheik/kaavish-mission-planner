@@ -37,6 +37,11 @@ _load_env_file(os.path.join(_PROJECT_ROOT, ".env"))
 
 # LLM configuration
 
+LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "gemini")
+
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+GEMINI_MODEL   = os.environ.get("GEMINI_MODEL", "gemini-3.6-flash")
+
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 GROQ_MODEL   = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 
