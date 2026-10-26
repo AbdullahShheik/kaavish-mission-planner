@@ -1,7 +1,7 @@
 {
   "examples": [
     {
-      "id": "plan_nd_st_sr_ia",
+      "id": "plan_001",
       "instruction": "Retrieve the box from shelf A and the box from shelf B, and deliver them to origin.",
       "output": {
         "status": "ok",
@@ -66,7 +66,7 @@
       }
     },
     {
-      "id": "plan_nd_st_sr_ta",
+      "id": "plan_002",
       "instruction": "Retrieve the boxes from shelf A, shelf B, and shelf C to origin. Each robot can only carry one box at a time.",
       "output": {
         "status": "ok",
@@ -159,7 +159,7 @@
       }
     },
     {
-      "id": "plan_id_st_sr_ta",
+      "id": "plan_003",
       "instruction": "Collect the box from shelf A and the box from shelf B, then return both boxes to origin in a single trip.",
       "output": {
         "status": "ok",
@@ -217,7 +217,7 @@
       }
     },
     {
-      "id": "plan_xd_st_sr_ia",
+      "id": "plan_004",
       "instruction": "Deliver the red box from shelf A and the blue box from shelf B to origin. The red box must be placed at origin before the blue box is placed.",
       "output": {
         "status": "ok",
@@ -282,7 +282,7 @@
       }
     },
     {
-      "id": "plan_xd_st_sr_ta",
+      "id": "plan_005",
       "instruction": "Deliver the two red boxes from shelf A and shelf B, and the blue box from shelf C to origin. All red boxes must be delivered to origin before the blue box is placed.",
       "output": {
         "status": "ok",
@@ -375,7 +375,7 @@
       }
     },
     {
-      "id": "plan_xd_st_mr_ia",
+      "id": "plan_006",
       "instruction": "Transport the heavy crate from storage A to origin.",
       "output": {
         "status": "ok",
@@ -412,7 +412,7 @@
       }
     },
     {
-      "id": "plan_xd_st_mr_ta",
+      "id": "plan_007",
       "instruction": "Clear storage A by delivering the two heavy crates to origin.",
       "output": {
         "status": "ok",
@@ -477,7 +477,7 @@
       }
     },
     {
-      "id": "plan_reject_clarification",
+      "id": "plan_008",
       "instruction": "Move that box to the other room.",
       "output": {
         "status": "clarification_needed",
@@ -485,7 +485,7 @@
       }
     },
     {
-      "id": "plan_reject_infeasible",
+      "id": "plan_009",
       "instruction": "Weld the broken metal frame on shelf A.",
       "output": {
         "status": "infeasible",
