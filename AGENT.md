@@ -122,10 +122,13 @@ kaavish-mission-planner/
 │   └── few_shot_examples_taxonomy.json # Stage-2 few-shot exemplars with step-by-step CoT classification
 ├── planner/
 │   ├── config.py                       # Central configuration, API keys, retry limits, hyperparams
-│   ├── llm_client.py                   # LLM API client wrapper (Groq / Anthropic)
+│   ├── llm_client.py                   # LLM API client wrapper (Gemini / Groq)
 │   ├── prompt_builder.py               # System prompt, schema definition, and P=(I,E,S,F) assembler
 │   ├── dag_builder.py                  # NetworkX DiGraph builder and 5-stage plan validator
-│   └── orchestrator.py                 # MissionPlanner orchestrator with retry & feedback loop
+│   ├── taxonomy_prompt_builder.py      # Stage-2 Taxonomy prompt assembler & exemplar injector
+│   ├── taxonomy_validator.py           # Taxonomy consistency & CoT validation
+│   ├── taxonomy_classifier.py          # Stage-2 Taxonomy Classifier orchestrator with retry loop
+│   └── orchestrator.py                 # Unified End-to-End Mission Orchestrator (Stage 1 + Stage 2)
 ├── RAG/
 │   ├── skill_retrieval.py              # SentenceTransformer-based skill bank retriever
 │   └── few_shot_retrieval.py           # CrossEncoder-based few-shot example retriever
@@ -134,7 +137,8 @@ kaavish-mission-planner/
 │   ├── test_skill_retrieval.py         # Unit tests for skill embedding & prompt block generation
 │   ├── test_few_shot_retrieval.py      # Unit tests for few-shot reranking & status guarantees
 │   ├── test_taxonomy_knowledge_base.py # Unit tests for taxonomy schema & exemplar consistency
-│   └── test_orchestrator.py            # Unit tests for end-to-end orchestrator and retry logic
+│   ├── test_orchestrator.py            # Unit tests for Stage-1 orchestrator and retry logic
+│   └── test_taxonomy_classifier.py     # Unit tests for Stage-2 taxonomy classifier and validator
 ├── requirements.txt                    # Core python dependencies
 └── AGENT.md                            # This onboarding guide
 ```
@@ -215,7 +219,7 @@ print("Validation errors:", errors)
 - [x] Initial prompt assembly and DAG builder.
 - [x] Unique subtask ID validation.
 - [x] Implement end-to-end mission planning orchestrator with retry loop.
-- [ ] Incorporate `itax_subclass` classification into the prompt schema and validation.
+- [x] Incorporate `itax_subclass` classification into the prompt schema and validation.
 - [ ] Implement Semester 1 solvers (`ND[ST-SR-IA]`, `ND[ST-SR-TA]`, `ID[ST-SR-TA]`, `XD[ST-SR-IA]`).
 - [ ] 2D low-fidelity simulation validation (due December 2026).
 
